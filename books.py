@@ -27,3 +27,29 @@ class Book:
             return f"{self.title} has been returned." 
         else:
             return f"{self.title} is already available."
+        
+# Subclass 1
+class Ebook(Book):
+    def __init__(self, title, author, pages, genre, file_size_mb):
+        super().__init__(title, author, pages, genre) # Calls the constructor of the base class
+        self.file_size_mb = file_size_mb # File size of the ebook
+
+    # Show ebook details by overriding parent's get_details method
+    def get_details(self):
+        details = super().get_details() # Calls the get_details method of the base class
+        return f"{details}, File Size: {self.file_size_mb}MB" # Returns the details of the ebook with file size
+    
+    def download(self):
+        return f"Downloading {self.title} ({self.file_size_mb}MB)" # Returns a message indicating the ebook is being downloaded
+    
+if __name__ == "__main__":
+    novel = Book("Alice in Wonderland", "Lewis Carroll", 200, "Fantasy") # Creates an instance of the Book class
+    print(novel.get_details()) # Prints the details of the book
+    print(novel.check_out()) # Checks out the book
+    print(novel.get_details()) # Prints the details of the book after checking out
+    print(novel.return_book()) # Returns the book
+
+    ebook = Ebook("The Great Gatsby", "F. Scott Fitzgerald", 180, "Classic", 2) # Creates an instance of the Ebook class    
+    print(ebook.get_details()) # Prints the details of the ebook
+    print(ebook.download()) # Downloads the ebook
+    print(ebook.check_out()) # Checks out the ebook
