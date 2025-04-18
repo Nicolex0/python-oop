@@ -7,6 +7,15 @@ class Book:
         self.genre = genre # Genre of the book
         self.is_checked_out = False #Checks whether the book is borrowed. If false, the book is available.
 
+    # Show book details
     def get_details(self):
         status = "Available" if not self.is_checked_out else "Checked Out" # Checks if book is checked out and sets the status text
         return f"Title: {self.title}, Author: {self.author}, Pages: {self.pages}, Genre: {self.genre}, Status: {status}" # status text
+    
+    # Check out book
+    def check_out(self):
+        if not self.is_checked_out: # Checks if the book is available
+            self.is_checked_out = True # Sets the book to checked out
+            return f"{self.title} has been checked out." # Returns a message indicating the book has been checked out
+        else:
+            return f"{self.title} is already checked out."
