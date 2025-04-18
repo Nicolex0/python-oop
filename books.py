@@ -19,3 +19,11 @@ class Book:
             return f"{self.title} has been checked out." # Returns a message indicating the book has been checked out
         else:
             return f"{self.title} is already checked out."
+        
+    # Return book
+    def return_book(self):
+        if self.is_checked_out: # Checks if the book is checked out
+            self.is_checked_out = False # Sets the book to available
+            return f"{self.title} has been returned." 
+        else:
+            return f"{self.title} is already available."
